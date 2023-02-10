@@ -3,6 +3,9 @@ import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "@/styles/Home.module.css";
 import Button from "@/components/atoms/Button";
+import products from "../data/items";
+import ProductCard from "@/components/organisms/ProductCard";
+import ShoppingHeader from "@/components/organisms/Header/ShoppingHeader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +19,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <Button>I am here!</Button>
+        <ShoppingHeader />
+        <div>
+          {products.map((product) => (
+            <ProductCard key={product.id} {...product} />
+          ))}
+        </div>
       </main>
     </>
   );
